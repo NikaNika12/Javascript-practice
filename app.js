@@ -1,411 +1,412 @@
-// // // const { Writable } = require("stream")
-
-// const { hasJSDocParameterTags } = require("typescript")
-
-
-
-// // // const heading = document.getElementById('hello')
-// // // // const heading2 = document.getElementsByTagName('h2')[0]
-// // // // const heading2 = document.getElementsByClassName('h2-class')[0]
-// // // // const heading2 = document.querySelector('.h2-class')
-// // // // const heading2 = document.querySelector('#sub-hello') // Всегда 1 элемент
-// // // const heading2 = document.querySelector('h2')
-
-
-// // // // const heading3 = heading2.nextElementSibling
-// // // const h2List = document.querySelectorAll('h2')
-// // // const heading3 = h2List[h2List.length - 1]
-
-
-// // // setTimeout(() => {
-// // //   addStylesTo(heading, 'JavaScript')
-// // // }, 1500)
-
-// // // const link = heading3.querySelector('a')
-
-// // // link.addEventListener('click', (event) => {
-// // //   event.preventDefault()
-// // //   console.log('Click on link', event.target.getAttribute('href'))
-// // //   const url = event.target.getAttribute('href')
-
-// // //   window.location = url
-// // // })
-
-
-// // // setTimeout(() => {
-// // //   addStylesTo(link, 'Практикуйся', 'blue')
-// // // }, 3000)
-
-// // // setTimeout(() => {
-// // //   addStylesTo(heading2, 'И все получится!', 'yellow', '2rem')
-// // // }, 4500)
-
-// // // function addStylesTo(node, text, color = 'red', fontSize) {
-// // //   node.textContent = text
-// // //   node.style.color = color
-// // //   node.style.textAlign = 'center'
-// // //   node.style.backgroundColor = 'black'
-// // //   node.style.padding = '2rem'
-// // //   node.style.display = 'block'
-// // //   node.style.width = '100%'
-
-// // //   // falsy: '', undefined, null, 0, false
-// // //   if (fontSize) {
-// // //     node.style.fontSize = fontSize
-// // //   }
-// // // }
-
-// // // heading.onclick = () => {
-// // //   if (heading.style.color === 'red') {
-// // //     heading.style.color = '#000'
-// // //     heading.style.backgroundColor = '#fff'
-// // //   } else {
-// // //     heading.style.color = 'red'
-// // //     heading.style.backgroundColor = '#000'
-// // //   }
-// // // }
-
-
-// // // heading2.addEventListener('dblclick', () => {
-// // //   if (heading2.style.color === 'yellow') {
-// // //     heading2.style.color = '#000'
-// // //     heading2.style.backgroundColor = '#fff'
-// // //   } else {
-// // //     heading2.style.color = 'yellow'
-// // //     heading2.style.backgroundColor = '#000'
-// // //   }
-// // // })
-
-// // // // const person = new Object({
-// // // //   name: "Veronika",
-// // // //   age: 23,
-// // // //   greet: function () {
-// // // //       console.dir("Greet!")
-// // // //   }
-// // // // })
-
-// // // // Object.prototype.sayHello = function () {
-// // // //   console.dir("Hello!")
-// // // // }
-
-// // // // const lena = Object.create(person)
-// // // // lena.name = "Elena"
-
-// // // function hello() {
-// // //   console.log("Hello", this)
-// // // }
-
-// // // const person = {
-// // //   name: "Vladilen",
-// // //   sayHello: hello,
-// // //   sayHelloWindow: hello.bind(this),
-// // //   logInfo: function(job, phone){
-// // //     console.group(`${this.name} info:`)
-// // //     console.log(`Name is ${this.name}`)
-// // //     console.log(`Age is ${this.age}`)
-// // //     console.log(`Phone is ${phone}`)
-// // //     console.log(`Job is ${job}`)
-// // //     console.groupEnd()
-// // //   }
-// // // }
-
-// // // const lena = {
-// // //   name: "Elena",
-// // //   age: 23
-// // // }
-
-// // // //person.logInfo.bind(lena,"frontend","44444")()
-// // // //person.logInfo.call(lena,"frontend","44444") вызывает функцию сразу
-// // // //person.logInfo.apply(lena, ["frontend","44444"])
-
-// // // // const lenaInf = person.logInfo.bind(lena,"frontend","44444")
-// // // // lenaInf()
-
-
-// // // const array = [1,2,3,4,5]
-// // // // function multiBy (arr,n){
-// // // //   return arr.map(function(i){
-// // // //     return i * n
-// // // //   })
-// // // // }
-
-// // // // Array.prototype.multiBy = function(n) {
-// // // //   return this.map(function(i){
-// // // //     return i * n
-// // // //   })
-// // // // }
-
-// // // // console.log(array.multiBy(2))
-
-// // // //замыкание
-
-// // // // function createCallFunction(n) {
-// // // //   return function (){
-// // // //     console.log(1000 * n)
-// // // //   }
-// // // // }
-
-// // // // const calc = createCallFunction(42)
-// // // // calc()
-
-// // // // function createIncrementor (n) {
-// // // //   return function (num) {
-// // // //     return n+num
-// // // //   }
-// // // // }
-
-// // // // const addFour = createIncrementor(4)
-
-// // // // console.log(addFour(10))
-
-// // // // function generateUrl(domain){
-// // // //   return function (url) {
-// // // //     return `https://${url}.${domain}`
-// // // //   }
-// // // // }
-
-// // // // const comDomain = generateUrl("com")
-// // // // console.log(comDomain("google"))
-
-// // // // function logPerson () {
-// // // //   console.log(`Person  ${this.name} ${this.age} ${this.job}`)
-// // // // }
-
-// // // // const person1 = {name: "Lena", age: 22, job: "kinesiologist"}
-// // // // const person2 = {name: "Maksim", age: 30, job: "programmer"}
-
-// // // // function bind(context, fn){
-// // // //   return function(...args){
-// // // //     fn.apply(context, args)
-// // // //   }
-// // // // }
-
-// // // // bind(person1, logPerson)()
-
-// // // // fetch("https://")
-// // // //   .then(response => response.json())
-// // // //   .then(data => console.log(data))
-// // // //   .catch
-// // // //   .finally
-
-// // // // const p = new Promise(function(resolve, reject){
-// // // //   setTimeout(() => {
-// // // //     console.log("Prep data")
-// // // //     const backendData = {
-// // // //       server: "aws",
-// // // //       port: 2000,
-// // // //       status: "working"
-// // // //     }
-// // // //     resolve(backendData)
-// // // //   }, 2000)
-// // // // })
-
-// // // // p.then(data => {
-// // // //   console.log("Promise resolved", data)
-// // // // })
-
-// // // // p.then(data =>{
-// // // //   return new Promise(function(resolve, reject){
-// // // //     setTimeout(() => {
-// // // //       data.modified = true
-// // // //       //resolve(data)
-// // // //       reject(data)
-// // // //     }, 2000)
-// // // // })
-// // // // })
-
-// // // // .then(clientData =>{
-// // // //   clientData.fromPromise = true
-// // // //   return clientData
-// // // // })
-
-// // // // .then(data => {
-// // // //   console.log("Modified", data)
-// // // // })
-
-// // // // .catch(err => console.error("Error: ", err))
-// // // // .finally(() => console.log("Finally"))
-
-// // // // //обьект р можно передавать куда угодно с помощью молудей, меньше кода, поэтапное и хорошо видимое изменение кода
-
-// // const sleep = ms => {
-// //   return new Promise(resolve => {
-// //     setTimeout(()=> resolve(),ms)
-// //   })
-// // }
-
-// // // // sleep(2000).then(() => console.log("After 2 sec"))
-// // // // sleep(3000).then(() => console.log("After 3 sec"))
-
-// // // // Promise.all([sleep(2000), sleep(3000)]).then(() => {
-// // // //   console.log("All promises")
-// // // // })
-
-// // // //вернет последний результат, дождется пока поэтапно выполнятся один за другим
-
-
-// // // // Promise.race([sleep(2000), sleep(3000)]).then(() => {
-// // // //   console.log("Race promises")
-// // // // })
-
-// // // //вернет первый выполнившийся промис
-
-// // //с помощью колбеков
-// // // function fetchTodos () {
-// // //   return sleep(2000).then(() => fetch(url))
-// // //   .then(response => response.json())
-// // // }
-
-// // // fetchTodos()
-// // //   .then(data => {
-// // //   console.log("Data: ", data)
-// // //   })
-// // //   .catch(e => console.error(e))
-// // //через асинк евейт
-// // // async function fetchToods(){ //обрабатывает и эжет завершение промиса, в родительскую функцию ставим асинк, а перед промисом евейт
-// // //   try{
-// // //     await sleep(2000)
-// // //     const response = await fetch(url)
-// // //     const data = await response.json()
-// // //     console.log("Data: ", data)
-
-// // //   } catch (e) {
-// // //     console.error(e)
-// // //   } finally {
-
-// // //   }
-// // // }
-// // // fetchTodos()
-
-
-// // // //Урок 6. JavaScript. Объекты с Object.create. Что такое getters, setters
-
-// // // const pers = Object.create(
-// // //   {calculateAge(){
-// // //     console.log("Age", new Date().getFullYear() - this.birthday)
-// // //   }}/*prototype*/,
-// // //   {
-// // //     name: {
-// // //       value: "Veronika",
-// // //       enumerable: true, //iteration possible
-// // //       writable: true, //possible to change
-// // //       configurable: true //possible to delete
-// // //     },
-// // //     birthday: {
-// // //       value: "1993",
-// // //       enumerable: false, //iteration impossible
-// // //       writable: false, //impossible to change
-// // //       configurable: false //impossible to delete
-// // //     },
-// // //     age: {
-// // //       get(){
-// // //         return new Date().getFullYear - this.birthday
-// // //       },
-// // //       set(value){
-// // //         document.body.style.background = "red"
-// // //         console.log("Set age", value) //person.age = "new", Set age new
-// // //       }
-// // //     }
-// // //   })
-
-// // //   person.name = "Maksim"
-
-// // //   for(let key in person){
-// // //     if(person.hasOwnProperty(key)) { //iteration only without prototype
-// // //     console.log("Key", key, person[key])
-// // //   }}
-
-// // class Animal {
-// //   static type = "ANIMAL"
-
-// //   constructor(options) {
-// //     this.name = options.name
-// //     this.age = options.age
-// //     }
-// //   voice(){
-// //     console.log("I am animal")
-// //   }
-// // }
-
-// // // const animal = new Animal({
-// // //   name: "Vasya",
-// // //   age: 5
-// // // })
-
-// // // class Cat extends Animal{
-// // //   static type = "CAT"
-
-// // //   constructor(options){
-// // //     super(options)
-// // //     this.color= options.color
-// // //   }
-// // //   voice(){
-// // //     super.voice()//вызывает родительский метод
-// // //     console.log("I am cat")
-// // //   }
-
-// // //   get ageInfo(){ //поле а не функция
-// // //     return this.age * 7
-// // //   }
-
-// // //   set ageInfo(newAge){   //cat.ageInfo = 10 cat.ageInfo 70
-// // //     this.age = newAge
-// // //   }
-
-// // // }
-
-// // // const cat = new Cat({
-// // //   name: "Petya",
-// // //   age: 10,
-// // //   color: "green"
-// // // })
-
-// // class Component {
-// //   constructor(selector){
-// //     this.$el = document.querySelector(selector)
-// //   }
-// //   hide(){
-// //     this.$el.style.display = "none" 
-// //   }
-
-// //   show(){
-// //     this.$el.style.display = "block" 
-// //   }
-// // }
-
-// // class Box extends Component {
-// //   constructor(options){
-// //     super(options.selector)
-
-// //     this.$el.style.width = this.$el.style.height = options.size + "px"
-// //     this.$el.style.background = options.color
-// //   }
-// // }
-
-// // const box1 = new Box({
-// //   selector:"#box1",
-// //   size: 100,
-// //   color: "red"
-// // })
-
-// // const box2 = new Box({
-// //   selector:"#box2",
-// //   size: 200,
-// //   color: "blue"
-// // })
-
-// // class Circle extends Box {
-// //   constructor(options){
-// //     super(options)
-// //     this.$el.style.borderRadius = "50%"
-// //   }
-// // }
-
-// // const c = new Circle({
-// //   selector:"#circle",
-// //   size: 50,
-// //   color: "green"
-// // })
+// const { Writable } = require("stream")
+
+const { hasJSDocParameterTags } = require("typescript")
+
+
+
+// const heading = document.getElementById('hello')
+// const heading2 = document.getElementsByTagName('h2')[0]
+// const heading2 = document.getElementsByClassName('h2-class')[0]
+// const heading2 = document.querySelector('.h2-class')
+// const heading2 = document.querySelector('#sub-hello') // Всегда 1 элемент
+// const heading2 = document.querySelector('h2')
+
+
+// const heading3 = heading2.nextElementSibling
+// const h2List = document.querySelectorAll('h2')
+// const heading3 = h2List[h2List.length - 1]
+
+
+// setTimeout(() => {
+//   addStylesTo(heading, 'JavaScript')
+// }, 1500)
+
+// const link = heading3.querySelector('a')
+
+// link.addEventListener('click', (event) => {
+//   event.preventDefault()
+//   console.log('Click on link', event.target.getAttribute('href'))
+//   const url = event.target.getAttribute('href')
+
+//   window.location = url
+// })
+
+
+// setTimeout(() => {
+//   addStylesTo(link, 'Практикуйся', 'blue')
+// }, 3000)
+
+// setTimeout(() => {
+//   addStylesTo(heading2, 'И все получится!', 'yellow', '2rem')
+// }, 4500)
+
+// function addStylesTo(node, text, color = 'red', fontSize) {
+//   node.textContent = text
+//   node.style.color = color
+//   node.style.textAlign = 'center'
+//   node.style.backgroundColor = 'black'
+//   node.style.padding = '2rem'
+//   node.style.display = 'block'
+//   node.style.width = '100%'
+
+
+//   // falsy: '', undefined, null, 0, false
+//   if (fontSize) {
+//     node.style.fontSize = fontSize
+//   }
+// }
+
+// heading.onclick = () => {
+//   if (heading.style.color === 'red') {
+//     heading.style.color = '#000'
+//     heading.style.backgroundColor = '#fff'
+//   } else {
+//     heading.style.color = 'red'
+//     heading.style.backgroundColor = '#000'
+//   }
+// }
+
+
+// heading2.addEventListener('dblclick', () => {
+//   if (heading2.style.color === 'yellow') {
+//     heading2.style.color = '#000'
+//     heading2.style.backgroundColor = '#fff'
+//   } else {
+//     heading2.style.color = 'yellow'
+//     heading2.style.backgroundColor = '#000'
+//   }
+// })
+
+// const person = new Object({
+//   name: "Veronika",
+//   age: 23,
+//   greet: function () {
+//       console.dir("Greet!")
+//   }
+// })
+
+// Object.prototype.sayHello = function () {
+//   console.dir("Hello!")
+// }
+
+// const lena = Object.create(person)
+// lena.name = "Elena"
+
+// function hello() {
+//   console.log("Hello", this)
+// }
+
+// const person = {
+//   name: "Vladilen",
+//   sayHello: hello,
+//   sayHelloWindow: hello.bind(this),
+//   logInfo: function(job, phone){
+//     console.group(`${this.name} info:`)
+//     console.log(`Name is ${this.name}`)
+//     console.log(`Age is ${this.age}`)
+//     console.log(`Phone is ${phone}`)
+//     console.log(`Job is ${job}`)
+//     console.groupEnd()
+//   }
+// }
+
+// const lena = {
+//   name: "Elena",
+//   age: 23
+// }
+
+//person.logInfo.bind(lena,"frontend","44444")()
+//person.logInfo.call(lena,"frontend","44444") вызывает функцию сразу
+//person.logInfo.apply(lena, ["frontend","44444"])
+
+// const lenaInf = person.logInfo.bind(lena,"frontend","44444")
+// lenaInf()
+
+
+const array = [1,2,3,4,5]
+// function multiBy (arr,n){
+//   return arr.map(function(i){
+//     return i * n
+//   })
+// }
+
+// Array.prototype.multiBy = function(n) {
+//   return this.map(function(i){
+//     return i * n
+//   })
+// }
+
+// console.log(array.multiBy(2))
+
+//замыкание
+
+// function createCallFunction(n) {
+//   return function (){
+//     console.log(1000 * n)
+//   }
+// }
+
+// const calc = createCallFunction(42)
+// calc()
+
+// function createIncrementor (n) {
+//   return function (num) {
+//     return n+num
+//   }
+// }
+
+// const addFour = createIncrementor(4)
+
+// console.log(addFour(10))
+
+// function generateUrl(domain){
+//   return function (url) {
+//     return `https://${url}.${domain}`
+//   }
+// }
+
+// const comDomain = generateUrl("com")
+// console.log(comDomain("google"))
+
+// function logPerson () {
+//   console.log(`Person  ${this.name} ${this.age} ${this.job}`)
+// }
+
+// const person1 = {name: "Lena", age: 22, job: "kinesiologist"}
+// const person2 = {name: "Maksim", age: 30, job: "programmer"}
+
+// function bind(context, fn){
+//   return function(...args){
+//     fn.apply(context, args)
+//   }
+// }
+
+// bind(person1, logPerson)()
+
+// fetch("https://")
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch
+//   .finally
+
+// const p = new Promise(function(resolve, reject){
+//   setTimeout(() => {
+//     console.log("Prep data")
+//     const backendData = {
+//       server: "aws",
+//       port: 2000,
+//       status: "working"
+//     }
+//     resolve(backendData)
+//   }, 2000)
+// })
+
+// p.then(data => {
+//   console.log("Promise resolved", data)
+// })
+
+// p.then(data =>{
+//   return new Promise(function(resolve, reject){
+//     setTimeout(() => {
+//       data.modified = true
+//       //resolve(data)
+//       reject(data)
+//     }, 2000)
+// })
+// })
+
+// .then(clientData =>{
+//   clientData.fromPromise = true
+//   return clientData
+// })
+
+// .then(data => {
+//   console.log("Modified", data)
+// })
+
+// .catch(err => console.error("Error: ", err))
+// .finally(() => console.log("Finally"))
+
+// //обьект р можно передавать куда угодно с помощью молудей, меньше кода, поэтапное и хорошо видимое изменение кода
+
+// const sleep = ms => {
+//   return new Promise(resolve => {
+//     setTimeout(()=> resolve(),ms)
+//   })
+// }
+
+// sleep(2000).then(() => console.log("After 2 sec"))
+// sleep(3000).then(() => console.log("After 3 sec"))
+
+// Promise.all([sleep(2000), sleep(3000)]).then(() => {
+//   console.log("All promises")
+// })
+
+//вернет последний результат, дождется пока поэтапно выполнятся один за другим
+
+
+// Promise.race([sleep(2000), sleep(3000)]).then(() => {
+//   console.log("Race promises")
+// })
+
+//вернет первый выполнившийся промис
+
+//с помощью колбеков
+// function fetchTodos () {
+//   return sleep(2000).then(() => fetch(url))
+//   .then(response => response.json())
+// }
+
+// fetchTodos()
+//   .then(data => {
+//   console.log("Data: ", data)
+//   })
+//   .catch(e => console.error(e))
+//через асинк евейт
+// async function fetchToods(){ //обрабатывает и эжет завершение промиса, в родительскую функцию ставим асинк, а перед промисом евейт
+//   try{
+//     await sleep(2000)
+//     const response = await fetch(url)
+//     const data = await response.json()
+//     console.log("Data: ", data)
+
+//   } catch (e) {
+//     console.error(e)
+//   } finally {
+
+//   }
+// }
+// fetchTodos()
+
+
+// //Урок 6. JavaScript. Объекты с Object.create. Что такое getters, setters
+
+// const pers = Object.create(
+//   {calculateAge(){
+//     console.log("Age", new Date().getFullYear() - this.birthday)
+//   }}/*prototype*/,
+//   {
+//     name: {
+//       value: "Veronika",
+//       enumerable: true, //iteration possible
+//       writable: true, //possible to change
+//       configurable: true //possible to delete
+//     },
+//     birthday: {
+//       value: "1993",
+//       enumerable: false, //iteration impossible
+//       writable: false, //impossible to change
+//       configurable: false //impossible to delete
+//     },
+//     age: {
+//       get(){
+//         return new Date().getFullYear - this.birthday
+//       },
+//       set(value){
+//         document.body.style.background = "red"
+//         console.log("Set age", value) //person.age = "new", Set age new
+//       }
+//     }
+//   })
+
+//   person.name = "Maksim"
+
+//   for(let key in person){
+//     if(person.hasOwnProperty(key)) { //iteration only without prototype
+//     console.log("Key", key, person[key])
+//   }}
+
+// class Animal {
+//   static type = "ANIMAL"
+
+//   constructor(options) {
+//     this.name = options.name
+//     this.age = options.age
+//     }
+//   voice(){
+//     console.log("I am animal")
+//   }
+// }
+
+// const animal = new Animal({
+//   name: "Vasya",
+//   age: 5
+// })
+
+// class Cat extends Animal{
+//   static type = "CAT"
+
+//   constructor(options){
+//     super(options)
+//     this.color= options.color
+//   }
+//   voice(){
+//     super.voice()//вызывает родительский метод
+//     console.log("I am cat")
+//   }
+
+//   get ageInfo(){ //поле а не функция
+//     return this.age * 7
+//   }
+
+//   set ageInfo(newAge){   //cat.ageInfo = 10 cat.ageInfo 70
+//     this.age = newAge
+//   }
+
+// }
+
+// const cat = new Cat({
+//   name: "Petya",
+//   age: 10,
+//   color: "green"
+// })
+
+// class Component {
+//   constructor(selector){
+//     this.$el = document.querySelector(selector)
+//   }
+//   hide(){
+//     this.$el.style.display = "none" 
+//   }
+
+//   show(){
+//     this.$el.style.display = "block" 
+//   }
+// }
+
+// class Box extends Component {
+//   constructor(options){
+//     super(options.selector)
+
+//     this.$el.style.width = this.$el.style.height = options.size + "px"
+//     this.$el.style.background = options.color
+//   }
+// }
+
+// const box1 = new Box({
+//   selector:"#box1",
+//   size: 100,
+//   color: "red"
+// })
+
+// const box2 = new Box({
+//   selector:"#box2",
+//   size: 200,
+//   color: "blue"
+// })
+
+// class Circle extends Box {
+//   constructor(options){
+//     super(options)
+//     this.$el.style.borderRadius = "50%"
+//   }
+// }
+
+// const c = new Circle({
+//   selector:"#circle",
+//   size: 50,
+//   color: "green"
+// })
 
 
 // //proxy objects
